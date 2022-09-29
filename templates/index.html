@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>The AI Clinic</title>
+      <link rel="stylesheet" type="text/css" href="/static/styles/index.css">
+    </head>
+
+    <body>
+      <div class="h1">
+        <h1>The AI Clinic</h1>
+      </div>
+      
+      <!-- Animated Background -->
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+      <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+      
+      <form action="/", method="post" enctype="multipart/form-data">
+        <div class="file-upload">
+          <div class="animated-background-wrap">
+            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add an xray, MRI, or photo for prediction</button>
+          </div>
+            <div class="image-upload-wrap">
+            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" type="file" name="imagefile"/>
+            <div class="drag-text">
+              <h3>Drag and drop a file or add above</h3>
+            </div>
+          </div>
+
+          <div class="file-upload-content">
+            <div class="animated-background-wrap">
+              <img class="file-upload-image" src="#" alt="your image" name="imagefile"/>
+              <div class="image-title-wrap">
+                <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+              </div>
+              <p>What do you wish to scan for?</p>
+              <form>
+                <input type="radio" id="brain_tumor" name="scan" value="brain_tumor">
+                <label for="brain_tumor">Brain Tumor</label><br>
+                <input type="radio" id="alzheimers" name="scan" value="alzheimers">
+                <label for="alzheimers">Alzheimers</label><br>
+                <input type="radio" id="lung_pneumonia" name="scan" value="lung_pneumonia">
+                <label for="lung_pneumonia">Lung Pneumonia</label><br>
+                <input type="radio" id="monkeypox" name="scan" value="monkeypox">
+                <label for="monkeypox">Monkeypox</label><br>
+              </form>
+              <div class="image-title-wrap">
+                <br>
+                <input class="predict-image" type="submit" value="Predict">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!--Partial -->
+      <script  src="/static/styles/script.js"></script>
+
+
+      <div class="predict">
+        <div class="animated-background-wrap">
+          <p>{% if prediction %}
+          {{prediction}}
+          {% endif %}</p>
+        </div>
+        
+        <p>{% if scholar1 %}
+          <div class="header">
+            <br>
+            <h4>Here are some references:</h4>
+          </div>
+          {% endif %}</p>
+
+        <div class="animated-background-wrap">
+        
+            <p>{% if scholar1 %}
+              {{scholar1}}
+              {% endif %}</p>
+
+            <p>{% if scholar2 %}
+              {{scholar2}}
+              {% endif %}</p>
+
+            <p>{% if scholar3 %}
+              {{scholar3}}
+              {% endif %}</p>
+
+        </div>
+      </div>
+    </body>
+</html>
